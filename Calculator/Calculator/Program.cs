@@ -31,6 +31,8 @@ namespace Calculator
                 Console.WriteLine("\td - Divide");
                 Console.Write("Your option? ");
 
+
+
                 string? op = Console.ReadLine();
 
                 // Validate input is not null, and matches the pattern

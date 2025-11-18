@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HabitLoggerUI": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\clark\\Desktop\\STUDY.Personal.Console.Tracker\\Console.HabitLogger\\HabitLoggerUI\\HabitLoggerUI.csproj"
+    }
+  }
+}

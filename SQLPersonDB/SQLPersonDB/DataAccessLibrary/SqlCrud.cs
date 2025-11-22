@@ -23,10 +23,10 @@ namespace DataAccessLibrary
             return db.LoadData<BasicPersonModel, dynamic>(sql, new { }, _connectionString);
         }
 
-        public void CreatePerson(BasicPersonModel person)
+        public void CreatePerson(FullPersonModel person)
         {
             string sql = "insert into dbo.Person (Firstname, LastName) values (@FirstName, @LastName);";
-            db.SaveData(sql, new { person.FirstName, person.LastName }, _connectionString);
+            db.SaveData(sql, new { person.BasicPerson.FirstName, person.BasicPerson.LastName }, _connectionString);
         }
 
         public FullPersonModel ReadPersonById(int id)

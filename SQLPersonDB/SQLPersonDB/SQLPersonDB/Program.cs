@@ -41,7 +41,8 @@ public class Program
                     break;
                 case "2a":
                     Console.Clear();
-                    ReadPerson(sql);
+                    int contactId = Helper.AskUserForInt("What is the ID: ");
+                    ReadPerson(sql, contactId);
                     break;
                 case "2b":
                     Console.Clear();
@@ -65,12 +66,6 @@ public class Program
 
     }
 
-    private static void SimpleReadPerson(SqlCrud sql, int id)
-    {
-        var person = sql.ReadPersonById(id);
-
-        Console.WriteLine($"\n[{person.BasicPerson.Id}: {person.BasicPerson.FirstName} {person.BasicPerson.LastName}]\n");
-    }
 
     private static void ReadAllContacts(SqlCrud sql)
     {
@@ -79,7 +74,7 @@ public class Program
         Console.WriteLine($"Person List (Count: {rows.Count} as of {DateTime.Now})");
         foreach (var row in rows)
         {
-            Console.WriteLine($"{row.Id}: {row.FirstName} {row.LastName}");
+            Console.WriteLine($"{row.FirstName}: {row.FirstName} {row.LastName}");
         }
     }
 
@@ -88,22 +83,30 @@ public class Program
         string? firstName = Helper.AskUser("What is your first name: ");
         string? lastName = Helper.AskUser("What is your last name: ");
 
-        BasicPersonModel person = new BasicPersonModel
+        //BasicPersonModel person = new BasicPersonModel
+        //{
+        //    FirstName = firstName,
+        //    LastName = lastName
+        //};
+
+        FullPersonModel person = new FullPersonModel
         {
-            FirstName = firstName,
-            LastName = lastName
+            BasicPerson = new BasicPersonModel
+            {
+                FirstName = firstName,
+                LastName = lastName
+            }
         };
 
         sql.CreatePerson(person);
     }
-
-    private static void ReadPerson(SqlCrud sql)
+    private static void ReadPerson(SqlCrud sql, int id)
     {
-        int contactId = Helper.AskUserForInt("What is the ID: ");
-        var contact = sql.ReadPersonById(contactId);
+        var person = sql.ReadPersonById(id);
 
-        Console.WriteLine($"{contact.BasicPerson.Id}: {contact.BasicPerson.FirstName} {contact.BasicPerson.LastName}");
+        Console.WriteLine($"\n[{person.BasicPerson.Id}: {person.BasicPerson.FirstName} {person.BasicPerson.LastName}]");
     }
+
     private static void UpdatePerson(SqlCrud sql)
     {
         BasicPersonModel person = new BasicPersonModel();
@@ -111,7 +114,7 @@ public class Program
         person.Id = Helper.AskUserForInt("What is the ID you wish to edit: ");
 
         Console.WriteLine("\nYou are editing...");
-        SimpleReadPerson(sql, person.Id);
+        ReadPerson(sql, person.Id);
         Console.WriteLine("--------------------------------------");
 
         person.FirstName = Helper.AskUser("What will be the new first name: ");
@@ -124,7 +127,7 @@ public class Program
         int id = Helper.AskUserForInt("What is the ID you wish to delete: ");
 
         Console.WriteLine("\nYou are deleting...");
-        SimpleReadPerson(sql, id);
+        ReadPerson(sql, id);
         Console.WriteLine("-------------------------------------\n");
         
         string input = Helper.AskUser("Are you sure you want to delete this person? (Y/N)");

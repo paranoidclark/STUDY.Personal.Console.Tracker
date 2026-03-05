@@ -3,8 +3,8 @@ is a full-stack single page application (SPA) designed to showcase all the thing
 
 ## Stack
 
-- ** Framework & Language **: Angular, TypeScript, C#, ASP.NET Core Web API
-- ** Markup & Styling **: HTML5, CSS3
-- ** Libraries **: RxJS
-- ** Database **: SQL Server Express, Entity Framework (EF) Core
-- ** Tools **: Swagger, Postman, SQL Server Management Studio (SSMS)
+- **Framework & Language:** Angular, TypeScript, C#, ASP.NET Core Web API
+- **Markup & Styling:** HTML5, CSS3
+- **Libraries:** RxJS
+- **Database:** SQL Server Express, Entity Framework (EF) Core
+- **Tools:** Swagger, Postman, SQL Server Management Studio (SSMS)
